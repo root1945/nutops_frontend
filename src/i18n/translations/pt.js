@@ -162,6 +162,7 @@ const esJSON = {
   'The phone field is required': 'O campo telefone é obrigatório',
   'Phone must be at least 15 characters':
     'Telefone deve ter pelo menos 15 caracteres',
+  'Email address': 'E-mail',
 };
 
 export default esJSON;
