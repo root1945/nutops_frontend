@@ -77,11 +77,18 @@ export function AuthProvider(props) {
         if (accessToken) {
           setSession(accessToken);
 
+          const response = await axios.get('/user/');
+          const user = response.data;
+
           dispatch({
             type: 'INITIALIZE',
             payload: {
               isAuthenticated: true,
-              user: {},
+              user: {
+                ...user,
+                avatar:
+                  user.Avatar.length > 0 ? user.Avatar[0].data : undefined,
+              },
             },
           });
         } else {
@@ -113,7 +120,7 @@ export function AuthProvider(props) {
       email,
       password,
     });
-    const { token } = response.data;
+    const { token, user } = response.data;
 
     const acessToken = token;
 
@@ -121,7 +128,10 @@ export function AuthProvider(props) {
     dispatch({
       type: 'LOGIN',
       payload: {
-        user: {},
+        user: {
+          ...user,
+          avatar: user.Avatar.length > 0 ? user.Avatar[0].data : undefined,
+        },
       },
     });
   };

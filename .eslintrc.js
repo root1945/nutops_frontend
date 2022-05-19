@@ -30,6 +30,8 @@ module.exports = {
     },
   },
   rules: {
+    'react/no-array-index-key': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
     'react/jsx-no-useless-fragment': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',

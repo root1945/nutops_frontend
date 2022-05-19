@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import * as Yup from 'yup';
 
@@ -78,7 +77,6 @@ function LoginJWT() {
             error={Boolean(touched.email && errors.email)}
             fullWidth
             margin="normal"
-            autoFocus
             helperText={touched.email && errors.email}
             label={t('Email address')}
             name="email"

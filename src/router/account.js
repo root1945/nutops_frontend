@@ -12,16 +12,22 @@ const Loader = (Component) =>
     );
   };
 
-const LoginBasic = Loader(lazy(() => import('src/views/Auth')));
+const Register = Loader(lazy(() => import('src/views/Register')));
+
+const Login = Loader(lazy(() => import('src/views/Auth')));
 
 const accountRoutes = [
   {
     path: 'login',
     element: (
       <Guest>
-        <LoginBasic />
+        <Login />
       </Guest>
     ),
+  },
+  {
+    path: 'register',
+    element: <Register />,
   },
 ];
 

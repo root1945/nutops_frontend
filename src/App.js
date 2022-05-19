@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
+import { QueryClientProvider } from 'react-query';
 import router from 'src/router';
 
 import { SnackbarProvider } from 'notistack';
@@ -8,6 +9,8 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import useAuth from 'src/hooks/useAuth';
 
 import { CssBaseline } from '@mui/material';
+import queryClient from 'src/utils/reactQuery';
+
 import ThemeProvider from './theme/ThemeProvider';
 import AppInit from './components/AppInit';
 
@@ -17,18 +20,20 @@ function App() {
 
   return (
     <ThemeProvider>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <SnackbarProvider
-          maxSnack={6}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
-        >
-          <CssBaseline />
-          {auth.isInitialized ? content : <AppInit />}
-        </SnackbarProvider>
-      </LocalizationProvider>
+      <QueryClientProvider client={queryClient}>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SnackbarProvider
+            maxSnack={6}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+          >
+            <CssBaseline />
+            {auth.isInitialized ? content : <AppInit />}
+          </SnackbarProvider>
+        </LocalizationProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }

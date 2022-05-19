@@ -74,8 +74,8 @@ function LoginBasic() {
                 >
                   {t('Don’t have an account, yet?')}
                 </Typography>{' '}
-                <Link component={RouterLink} to="/account/register-basic">
-                  <b>Sign up here</b>
+                <Link component={RouterLink} to="/account/register">
+                  <b>{t('Sign up here')}</b>
                 </Link>
               </Box>
             </Card>

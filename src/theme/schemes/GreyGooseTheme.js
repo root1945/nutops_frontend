@@ -1,6 +1,8 @@
 import { alpha, createTheme, lighten, darken } from '@mui/material';
 import '@mui/lab/themeAugmentation';
 
+import i18n from 'src/i18n/i18n';
+
 const themeColors = {
   primary: '#2442AF',
   secondary: '#6E759F',
@@ -130,7 +132,7 @@ const colors = {
 };
 
 export const GreyGooseTheme = createTheme({
-  // direction: i18n.dir(),
+  direction: i18n.dir(),
   colors: {
     gradients: {
       blue1: colors.gradients.blue1,
