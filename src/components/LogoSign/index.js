@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import nutOps from './nutOps.png';
 
 const LogoWrapper = styled(Link)(
   ({ theme }) => `
@@ -25,56 +26,6 @@ const LogoSignWrapper = styled(Box)(
   () => `
         width: 52px;
         height: 38px;
-`
-);
-
-const LogoSign = styled(Box)(
-  ({ theme }) => `
-        background: ${theme.general.reactFrameworkColor};
-        width: 18px;
-        height: 18px;
-        border-radius: ${theme.general.borderRadiusSm};
-        position: relative;
-        transform: rotate(45deg);
-        top: 3px;
-        left: 17px;
-
-        &:after,
-        &:before {
-            content: "";
-            display: block;
-            width: 18px;
-            height: 18px;
-            position: absolute;
-            top: -1px;
-            right: -20px;
-            transform: rotate(0deg);
-            border-radius: ${theme.general.borderRadiusSm};
-        }
-
-        &:before {
-            background: ${theme.palette.primary.main};
-            right: auto;
-            left: 0;
-            top: 20px;
-        }
-
-        &:after {
-            background: ${theme.palette.secondary.main};
-        }
-`
-);
-
-const LogoSignInner = styled(Box)(
-  ({ theme }) => `
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        z-index: 5;
-        border-radius: ${theme.general.borderRadiusSm};
-        background: ${theme.header.background};
 `
 );
 
@@ -100,10 +51,7 @@ function Logo() {
   const theme = useTheme();
 
   return (
-    <TooltipWrapper
-      title={t('Tokyo White React Javascript Admin Dashboard')}
-      arrow
-    >
+    <TooltipWrapper title={t('Your inventory manager.')} arrow>
       <LogoWrapper to="/overview">
         <Badge
           sx={{
@@ -111,16 +59,15 @@ function Logo() {
               fontSize: theme.typography.pxToRem(11),
               right: -2,
               top: 8,
+              background: '#dbb112',
+              color: 'white',
             },
           }}
           overlap="circular"
-          color="success"
-          badgeContent="3.0"
+          badgeContent="1.0"
         >
           <LogoSignWrapper>
-            <LogoSign>
-              <LogoSignInner />
-            </LogoSign>
+            <img width="80%" alt="nutOps" src={nutOps} />
           </LogoSignWrapper>
         </Badge>
       </LogoWrapper>

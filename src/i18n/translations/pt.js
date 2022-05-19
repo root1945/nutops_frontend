@@ -163,6 +163,7 @@ const esJSON = {
   'Phone must be at least 15 characters':
     'Telefone deve ter pelo menos 15 caracteres',
   'Email address': 'E-mail',
+  'Your inventory manager.': 'O seu gerenciador de inventário.',
 };
 
 export default esJSON;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Card, Link, Typography, Container, styled } from '@mui/material';
-
+import Logo from 'src/components/LogoSign';
 import { useTranslation } from 'react-i18next';
 
 import { Helmet } from 'react-helmet-async';
@@ -31,11 +31,12 @@ function LoginBasic() {
   return (
     <>
       <Helmet>
-        <title>Login - Basic</title>
+        <title>Login</title>
       </Helmet>
       <MainContent>
         <TopWrapper>
           <Container maxWidth="sm">
+            <Logo />
             <Card
               sx={{
                 mt: 3,
