@@ -103,7 +103,7 @@ const esJSON = {
     'Preencha os campos abaixo para criar uma conta.',
   'Personal Informations': 'Informações pessoais',
   'Company Details': 'Detalhes da empresa',
-  'Complete Registration': 'Completar registro',
+  'Complete registration': 'Completar registro',
   'First name': 'Nome',
   'Write your first name here...': 'Escreva seu nome aqui...',
   'The email provided should be a valid email address':
@@ -164,6 +164,9 @@ const esJSON = {
     'Telefone deve ter pelo menos 15 caracteres',
   'Email address': 'E-mail',
   'Your inventory manager.': 'O seu gerenciador de inventário.',
+  'Already have an account?': 'Já tem uma conta?',
+  'Sign in here': 'Faça login aqui',
+  Previous: 'Anterior',
 };
 
 export default esJSON;
