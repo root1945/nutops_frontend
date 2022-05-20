@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInt = axios.create({
-  baseURL: 'http://localhost:3030',
+  baseURL: 'https://api.nutops.com.br',
   timeout: 30000,
 });
 
