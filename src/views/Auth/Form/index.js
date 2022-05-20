@@ -29,7 +29,7 @@ function LoginJWT() {
       initialValues={{
         email: '',
         password: '',
-        terms: false,
+        terms: true,
         submit: null,
       }}
       validationSchema={Yup.object().shape({

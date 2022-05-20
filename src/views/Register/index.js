@@ -142,7 +142,7 @@ function RegisterWizard() {
                       currentValue.replace(/[^0-9]+/g, '')
                     ),
                   password: Yup.string()
-                    .min(8)
+                    .min(8, t('password must be at least 8 characters'))
                     .max(255)
                     .required(t('The password field is required')),
                   password_confirm: Yup.string()
@@ -247,8 +247,15 @@ function RegisterWizard() {
               <FormikStep
                 validationSchema={Yup.object().shape({
                   companyPhone: Yup.string()
-                    .max(55)
-                    .required(t('The company phone field is required')),
+                    .required(t('The company phone field is required'))
+                    .matches(
+                      /^[^A-Za-z]+$/g,
+                      t('Company phone number is not valid')
+                    )
+                    .min(11, t('Company phone number is not valid'))
+                    .transform((currentValue) =>
+                      currentValue.replace(/[^0-9]+/g, '')
+                    ),
                   companyName: Yup.string()
                     .max(255)
                     .required(t('The company name field is required')),
@@ -269,11 +276,11 @@ function RegisterWizard() {
                       />
                     </Grid>
                     <Grid item xs={12} md={6}>
-                      <Field
+                      <InputPhone
                         fullWidth
                         name="companyPhone"
-                        component={TextField}
                         label={t('Company phone')}
+                        type="text"
                       />
                     </Grid>
                     <Grid item xs={12} md={6}>

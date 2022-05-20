@@ -167,6 +167,11 @@ const esJSON = {
   'Already have an account?': 'Já tem uma conta?',
   'Sign in here': 'Faça login aqui',
   Previous: 'Anterior',
+  'Complete Registration': 'Confirmar Registro',
+  'password must be at least 8 characters':
+    'A senha deve conter pelo menos 8 caracteres',
+  'Company phone number is not valid':
+    'O número de telefone da empresa não é válido',
 };
 
 export default esJSON;
