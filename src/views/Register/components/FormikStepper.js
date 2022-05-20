@@ -1,18 +1,15 @@
 /* eslint-disable no-nested-ternary */
 import React, { Children, useState } from 'react';
-import { Link as RouterLink, Link } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { useSnackbar } from 'notistack';
 
 import {
-  Box,
   Button,
   CircularProgress,
   Step,
   StepLabel,
   Stepper,
-  Typography,
 } from '@mui/material';
 import { Form, Formik } from 'formik';
 
@@ -60,10 +57,6 @@ function FormikStepper({ children, ...props }) {
               } else {
                 enqueueSnackbar(t('Email and/or Phone already registered!'), {
                   variant: 'warning',
-                  anchorOrigin: {
-                    vertical: 'top',
-                    horizontal: 'right',
-                  },
                 });
               }
             },
@@ -98,21 +91,17 @@ function FormikStepper({ children, ...props }) {
               display="flex"
               alignItems="center"
               justifyContent="space-between"
-              mt={-7}
             >
-              <Box mt={4}>
-                <Typography
-                  component="span"
-                  variant="subtitle2"
-                  color="text.primary"
-                  fontWeight="bold"
-                >
-                  {t('Already have an account?')}
-                </Typography>{' '}
-                <Link component={RouterLink} to="/account/login">
-                  <b>{t('Sign in here')}</b>
-                </Link>
-              </Box>
+              <Button
+                disabled={isSubmitting || step === 0}
+                variant="outlined"
+                color="primary"
+                type="button"
+                onClick={() => setStep((s) => s - 1)}
+              >
+                {t('Previous')}
+              </Button>
+
               <Button
                 startIcon={
                   isSubmitting ? <CircularProgress size="1rem" /> : null
@@ -125,7 +114,7 @@ function FormikStepper({ children, ...props }) {
                 {isSubmitting
                   ? t('Submitting')
                   : isLastStep()
-                  ? t('Complete Registration')
+                  ? t('Complete registration')
                   : t('Next step')}
               </Button>
             </BoxActions>

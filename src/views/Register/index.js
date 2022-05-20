@@ -12,15 +12,12 @@ import {
   Collapse,
   Alert,
   IconButton,
-  TextField as TextFieldMui,
 } from '@mui/material';
-import { Field, useField } from 'formik';
+import { Field } from 'formik';
 import { CheckboxWithLabel, TextField } from 'formik-mui';
 import * as Yup from 'yup';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
-
-import InputMask from 'react-input-mask';
 
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -31,34 +28,7 @@ import FormikStep from './components/FormikStep';
 import MainContent from './components/MainContent';
 import AvatarSuccess from './components/AvatarSuccess';
 
-function InputPhone(props) {
-  const [focusError, setFocusError] = useState(false);
-  const [, meta, helpers] = useField(props.name);
-
-  const isErrorPhone = !!meta?.error;
-
-  const { value } = meta;
-  const { setValue } = helpers;
-
-  return (
-    <InputMask
-      mask="(99) 99999-9999"
-      alwaysShowMask={false}
-      value={value}
-      onFocus={() => setFocusError(true)}
-      onChange={(event) => setValue(event.target.value)}
-      maskChar="_"
-    >
-      {() => (
-        <TextFieldMui
-          {...props}
-          error={isErrorPhone && focusError}
-          helperText={meta?.error}
-        />
-      )}
-    </InputMask>
-  );
-}
+import InputPhone from './components/InputPhone';
 
 function RegisterWizard() {
   const { enqueueSnackbar } = useSnackbar();
@@ -213,7 +183,15 @@ function RegisterWizard() {
                         placeholder={t('Write your email here...')}
                       />
                     </Grid>
-                    <Grid item xs={12} md={6} />
+                    <Grid item xs={12} mt={-2} md={6}>
+                      <InputPhone
+                        fullWidth
+                        label={t('Phone number')}
+                        name="phone"
+                        margin="normal"
+                        type="text"
+                      />
+                    </Grid>
                     <Grid item xs={12} md={6}>
                       <Field
                         fullWidth
@@ -232,15 +210,6 @@ function RegisterWizard() {
                         component={TextField}
                         label={t('Confirm password')}
                         placeholder={t('Confirm password here...')}
-                      />
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <InputPhone
-                        fullWidth
-                        label={t('Phone number')}
-                        name="phone"
-                        margin="normal"
-                        type="text"
                       />
                     </Grid>
                     <Grid item xs={12}>
