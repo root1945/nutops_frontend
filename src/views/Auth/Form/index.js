@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Link as RouterLink } from 'react-router-dom';
 
+import { useSnackbar } from 'notistack';
+
 import {
   Box,
   Button,
@@ -23,6 +25,7 @@ function LoginJWT() {
   const { login } = useAuth();
   const isMountedRef = useRefMounted();
   const { t } = useTranslation();
+  const { enqueueSnackbar } = useSnackbar();
 
   return (
     <Formik
@@ -50,11 +53,22 @@ function LoginJWT() {
           await login(values.email, values.password);
 
           if (isMountedRef.current) {
+            enqueueSnackbar('Logado com sucesso! ', {
+              autoHideDuration: 1000,
+              variant: 'success',
+            });
+
             setStatus({ success: true });
             setSubmitting(false);
           }
         } catch (err) {
-          console.error(err);
+          if (err.status) {
+            enqueueSnackbar('Email e/ou Senha incorreta. ', {
+              autoHideDuration: 2000,
+              variant: 'warning',
+            });
+          }
+
           if (isMountedRef.current) {
             setStatus({ success: false });
             setErrors({ submit: err.message });
